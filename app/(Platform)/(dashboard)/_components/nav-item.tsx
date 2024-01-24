@@ -24,11 +24,11 @@ interface NavItemProps {
 }
 
 export const NavItem = ({
-                            isExpanded,
-                            isActive,
-                            onExpanded,
-                            organization
-                        }: NavItemProps) => {
+    isExpanded,
+    isActive,
+    onExpanded,
+    organization
+}: NavItemProps) => {
     const router = useRouter();
     const pathname = usePathname();
 

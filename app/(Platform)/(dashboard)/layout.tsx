@@ -2,12 +2,12 @@ import React from 'react';
 import {Navbar} from "@/app/(Platform)/(dashboard)/_components/navbar";
 
 const DashboardLayout = ({
-                             children
-                         }: {
+    children
+}: {
     children: React.ReactNode
 }) => {
     return (
-        <div>
+        <div className='h-full'>
             <Navbar/>
             {children}
         </div>

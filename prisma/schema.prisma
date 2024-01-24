@@ -13,5 +13,47 @@ datasource db {
 
 model Board {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
+  orgId         String
+  title         String
+  imageId       String
+  imageThumbUrl String @db.String
+  imageFullUrl  String @db.String
+  imageUserName String @db.String
+  imageLinkHTML String @db.String
+
+  lists List[]
+
+  createedAt   DateTime @default(now())
+  updatesAt    DateTime @updatedAt
+}
+
+model List {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  order      Int
+
+  boardId    String @db.ObjectId
+  board      Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  cards      Card[]
+
+  createedAt DateTime @default(now())
+  updatesAt  DateTime @updatedAt
+
+  @@index([boardId])
+}
+
+model Card {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  order       Int
+  description String? @db.String
+
+  listId      String @db.ObjectId
+  list        List @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  createedAt  DateTime @default(now())
+  updatesAt   DateTime @updatedAt
+
+  @@index([listId])
 }

@@ -8,22 +8,50 @@ import {createSafeAction} from "@/lib/create-safe-action";
 import {CreateBoard} from "@/actions/crate-board/schema";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-    const {userId} = auth();
+    const {userId, orgId} = auth();
 
-    if (!userId) {
+    if (!userId || !orgId) {
         return {
             error: "unauthorized",
         }
     }
 
-    const { title} = data;
+    const { title,image} = data;
+
+    const [
+        imageId,
+        imageThumbUrl,
+        imageFullUrl,
+        imageLinkHTML,
+        imageUserName,
+    ] = image.split('|')
+
+    console.log({
+        imageId,
+        imageThumbUrl,
+        imageFullUrl,
+        imageUserName,
+        imageLinkHTML
+    })
+
+    if(!imageId || !imageThumbUrl || !imageFullUrl || !imageUserName || !imageLinkHTML) {
+        return  {
+            error: 'Missing field. Failed to create board.'
+        }
+    }
 
     let board;
 
     try{
         board = await db.board.create({
             data: {
-                title
+                title,
+                orgId,
+                imageId,
+                imageThumbUrl,
+                imageFullUrl,
+                imageUserName,
+                imageLinkHTML
             }
         })
     }catch (error) {
@@ -36,4 +64,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     return {data: board}
 }
 
-export const createBoard = createSafeAction(CreateBoard, handler);
+export const createBoard = createSafeAction(CreateBoard, handler)

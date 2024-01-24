@@ -1,8 +1,8 @@
 import {Sidebar} from "@/app/(Platform)/(dashboard)/_components/sidebar";
 
 const OrganizationLayout = ({
-                                children
-                            }: {
+    children
+}: {
     children: React.ReactNode
 }) => {
     return (
