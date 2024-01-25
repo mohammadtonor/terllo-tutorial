@@ -7,10 +7,11 @@ const PlatformLayout = ({
     children: React.ReactNode
 }) => {
     return (
-        <ClerkProvider>
+         <ClerkProvider>
             <Toaster />
             {children}
-        </ClerkProvider>
+         </ClerkProvider>
+
     );
 };
 

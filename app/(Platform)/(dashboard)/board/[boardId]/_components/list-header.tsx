@@ -10,11 +10,13 @@ import {FormInput} from "@/components/form/form-input";
 import {ListOptions} from "@/app/(Platform)/(dashboard)/board/[boardId]/_components/list-options";
 
 interface ListHeaderProps {
-    data: List
+    data: List;
+    onAddCard: () => void
 }
 
 export  const ListHeader = ({
-    data
+    data,
+    onAddCard
 }: ListHeaderProps) => {
 
     const [title, setTitle]= useState(data.title);
@@ -105,7 +107,7 @@ export  const ListHeader = ({
                 </div>
             )}
             <ListOptions
-                onAddCard={() => {}}
+                onAddCard={onAddCard}
                 data={data}
             />
         </div>

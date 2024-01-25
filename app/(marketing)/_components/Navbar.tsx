@@ -1,6 +1,7 @@
 import {Logo} from "@/components/logo";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import {UserButton} from "@clerk/nextjs";
 
 
 export const Navbar = () => {
