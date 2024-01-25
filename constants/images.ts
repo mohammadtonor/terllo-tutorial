@@ -266,15 +266,15 @@ export const defaultImages = [
     "breadcrumbs": [],
     "urls": {
         "raw": "https://images.unsplash.com/photo-1556038024-ea4909e4f069?ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8\u0026ixlib=rb-4.0.3",
-        "full": "https://images.unsplash.com/photo-1556038024-ea4909e4f069?crop=entropy\u0026cs=srgb\u0026fm=jpg\u0026ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8\u0026ixlib=rb-4.0.3\u0026q=85",
+        "full": "https://utfs.io/f/423fc04e-3610-4eba-b8f6-c5d06bff951c-g42k3u.jfif",
         "regular": "https://images.unsplash.com/photo-1556038024-ea4909e4f069?crop=entropy\u0026cs=tinysrgb\u0026fit=max\u0026fm=jpg\u0026ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8\u0026ixlib=rb-4.0.3\u0026q=80\u0026w=1080",
         "small": "https://images.unsplash.com/photo-1556038024-ea4909e4f069?crop=entropy\u0026cs=tinysrgb\u0026fit=max\u0026fm=jpg\u0026ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8\u0026ixlib=rb-4.0.3\u0026q=80\u0026w=400",
-        "thumb": "https://images.unsplash.com/photo-1556038024-ea4909e4f069?crop=entropy\u0026cs=tinysrgb\u0026fit=max\u0026fm=jpg\u0026ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8\u0026ixlib=rb-4.0.3\u0026q=80\u0026w=200",
+        "thumb": "https://utfs.io/f/6431cd8a-d019-49ab-a76b-b52108f61752-as4i7e.jfif",
         "small_s3": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1556038024-ea4909e4f069"
     },
     "links": {
         "self": "https://api.unsplash.com/photos/white-and-black-concrete-building-under-white-clouds-cVGIi-sEFyQ",
-        "html": "https://unsplash.com/photos/white-and-black-concrete-building-under-white-clouds-cVGIi-sEFyQ",
+        "html": "https://utfs.io/f/423fc04e-3610-4eba-b8f6-c5d06bff951c-g42k3u.jfif",
         "download": "https://unsplash.com/photos/cVGIi-sEFyQ/download?ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8",
         "download_location": "https://api.unsplash.com/photos/cVGIi-sEFyQ/download?ixid=M3w1NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDYwMjg5MDV8"
     },
