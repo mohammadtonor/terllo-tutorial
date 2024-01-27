@@ -29,16 +29,16 @@ model Board {
 
 model List {
   id         String @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
-  order      Int
+  title     String
+  order     Int
 
-  boardId    String @db.ObjectId
-  board      Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  boardId   String @db.ObjectId
+  board     Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
 
-  cards      Card[]
+  cards     Card[]
 
-  createedAt DateTime @default(now())
-  updatesAt  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([boardId])
 }
@@ -50,10 +50,42 @@ model Card {
   description String? @db.String
 
   listId      String @db.ObjectId
-  list        List @relation(fields: [listId], references: [id], onDelete: Cascade)
+  list        List  @relation(fields: [listId], references: [id], onDelete: Cascade)
 
-  createedAt  DateTime @default(now())
-  updatesAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@index([listId])
 }
+
+enum ACTIONS {
+  CREATE
+  DELETE
+  UPDATE
+}
+
+enum ENTITY_TYPE {
+  BOARD
+  LIST
+  CARD
+}
+
+model AuditLog {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  orgId       String
+  actions     ACTIONS
+  entityId    String
+  entityType  ENTITY_TYPE
+  entityTitle String
+  userId      String
+  userImage   String @db.String
+  userName    String @db.String
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+
+
+

@@ -10,6 +10,8 @@ import { createSafeAction } from "@/lib/create-safe-action";
 import { DeleteList} from "./schema";
 import { InputType, ReturnType } from "./types";
 import {list} from "postcss";
+import {createAuditLog} from "@/lib/create-audit-log";
+import {ACTIONS, ENTITY_TYPE} from ".prisma/client";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -26,6 +28,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     let list;
 
     try {
+
         list = await db.list.delete({
             where: {
                 id,
@@ -36,7 +39,12 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             },
         });
 
-
+        await createAuditLog({
+            entityTitle: list.title,
+            entityId: list.id,
+            entityType: ENTITY_TYPE.LIST,
+            actions: ACTIONS.DELETE
+        });
     } catch (error) {
         return {
             error: "Failed to delete."

@@ -56,10 +56,12 @@ export const CardForm =forwardRef<HTMLTextAreaElement, CardFormProps>( ({
         const boardId = params.boardId as string;
         const listId = formData.get('listId') as string;
 
+        console.log(title)
+
         execute({
             title,
-            boardId,
-            listId
+            listId,
+            boardId
         })
     }
 
@@ -68,9 +70,9 @@ export const CardForm =forwardRef<HTMLTextAreaElement, CardFormProps>( ({
             <form
                 action={onSubmit}
                 ref={formRef}
-                className='space-y-1'>
+                className='space-y-1 px-1 py-0.5 m-1'>
                 <FormTextarea
-                    id='textarea'
+                    id='title'
                     label='textarea'
                     ref={ref}
                     onKeyDown={onTextareaKeyDown}
@@ -84,7 +86,7 @@ export const CardForm =forwardRef<HTMLTextAreaElement, CardFormProps>( ({
                     value={listId}
                 />
                 <div className='flex items-center gap-x-1'>
-                    <FormButton variant={'primary'}>
+                    <FormButton >
                         Add card..
                     </FormButton>
                     <Button onClick={disableEditing} variant='ghost' size='sm'>
