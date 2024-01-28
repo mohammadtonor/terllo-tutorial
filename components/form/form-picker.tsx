@@ -27,40 +27,40 @@ export const FormPicker = ({
     const [selectedImageId, setSelectedImageId]
         = useState(null);
 
-    // useEffect(() => {
-    //     const fetchImages = async () => {
-    //         try {
-    //             const result = await unsplash.photos.getRandom({
-    //                 collectionIds: ["317099"],
-    //                 count: 9,
-    //             });
-    //
-    //
-    //             if (result && result.response) {
-    //                 const newImages = (result.response as Array<Record<string, any>>);
-    //                 setImages(newImages);
-    //                 console.log(result)
-    //             } else {
-    //                 console.error("Failed to get images from Unsplash");
-    //             }
-    //         } catch (error) {
-    //             console.log(error);
-    //             setImages(defaultImages);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     };
-    //
-    //     fetchImages();
-    // }, []);
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const result = await unsplash.photos.getRandom({
+                    collectionIds: ["317099"],
+                    count: 9,
+                });
 
-    // if (isLoading) {
-    //     return (
-    //         <div className='p-6 flex items-center justify-center'>
-    //             <Loader2 className='h-6 w-6 text-sky-700 animate-spin'/>
-    //         </div>
-    //     )
-    // }
+
+                if (result && result.response) {
+                    const newImages = (result.response as Array<Record<string, any>>);
+                    setImages(newImages);
+                    console.log(result)
+                } else {
+                    console.error("Failed to get images from Unsplash");
+                }
+            } catch (error) {
+                console.log(error);
+                setImages(defaultImages);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchImages();
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className='p-6 flex items-center justify-center'>
+                <Loader2 className='h-6 w-6 text-sky-700 animate-spin'/>
+            </div>
+        )
+    }
 
     return (
         <div className='relative'>
