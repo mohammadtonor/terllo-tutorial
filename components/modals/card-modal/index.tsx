@@ -12,7 +12,7 @@ import {Actions} from "@/components/modals/card-modal/actions";
 import {AuditLog} from ".prisma/client";
 import {Activity} from "@/components/modals/card-modal/activity";
 
-export const Index = () => {
+export const CardModal = () => {
     const {id, isOpen, onClose } = useCardModal()
 
     console.log(id);

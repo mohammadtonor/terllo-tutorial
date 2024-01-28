@@ -17,6 +17,7 @@ import {Button} from "@/components/ui/button";
 import {FormInput} from "@/components/form/form-input";
 import {FormButton} from "@/components/form/form-button";
 import {FormPicker} from "@/components/form/form-picker";
+import {useProModal} from "@/hooks/use-pro-modal";
 
 interface FormPopoverProps {
     children: React.ReactNode;
@@ -31,6 +32,7 @@ export const FormPopover = ({
     align,
     sideOffset
 }: FormPopoverProps) => {
+    const proModal = useProModal();
     const router = useRouter();
     const closeRef = useRef<ElementRef<'button'>>(null)
 
@@ -42,6 +44,7 @@ export const FormPopover = ({
         },
         onError: (err) => {
             toast.error(err);
+            proModal.onOpen()
         }
     })
 

@@ -1,11 +1,15 @@
-import {HelpCircle, User2} from "lucide-react";
-import {Hint} from "@/components/hint";
-import {FormPopover} from "@/components/form/form-popover";
+import Link from "next/link";
 import {auth} from "@clerk/nextjs";
 import {redirect} from "next/navigation";
 import {db} from "@/lib/db";
-import Link from "next/link";
+import {getAvailableCount} from "@/lib/org-limit";
+import {HelpCircle, User2} from "lucide-react";
+
+import {FormPopover} from "@/components/form/form-popover";
+import {Hint} from "@/components/hint";
 import {Skeleton} from "@/components/ui/skeleton";
+import {MAX_FREE_BOARDS} from "@/constants/boards";
+import {checkSubscription} from "@/lib/checkSubscription";
 
 export  const BoardList = async () => {
     const {orgId} = auth();
@@ -24,7 +28,8 @@ export  const BoardList = async () => {
     });
 
 
-
+    const availableCount = await getAvailableCount()
+    const isPro = await checkSubscription();
     return (
         <div className='space-y-4'>
             <div className='flex items-center font-semibold text-lg text-neutral-700'>
@@ -52,7 +57,9 @@ export  const BoardList = async () => {
                         flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition'
                     >
                         <p className='text-sm'>Create New Board</p>
-                        <span className='text-xs'>5 Remaining</span>
+                        <span className='text-xs'>
+                            {isPro ? 'Unlimited' : `${MAX_FREE_BOARDS - availableCount} Remaining`}
+                        </span>
                         <Hint
                             description='Free Workspaces can have up to 5  open boards.
                              For unlimited boards update this workspace'

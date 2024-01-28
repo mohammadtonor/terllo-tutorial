@@ -6,10 +6,10 @@ import {CreditCard} from "lucide-react";
 import {Skeleton} from "@/components/ui/skeleton";
 
 interface  InfoProps {
-
+    isPro: boolean;
 }
 
-export const Info = ( ) => {
+export const Info = ({ isPro }: InfoProps ) => {
     const {organization , isLoaded} = useOrganization();
 
     if (!isLoaded) {
@@ -34,7 +34,7 @@ export const Info = ( ) => {
                 </p>
                 <div className='text-sm text-muted-foreground flex items-center gap-1'>
                     <CreditCard className='w-4 h-4 '/>
-                    Free
+                    {isPro? 'Pro' :'Free'}
                 </div>
             </div>
         </div>

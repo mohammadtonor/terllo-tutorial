@@ -17,7 +17,9 @@ interface ListContainerProps {
 
 function reorder<T>(list: T[], startIndex: number, endIndex: number) {
     const result = Array.from(list);
+    console.log('result', result);
     const [removed] = result.splice(startIndex, 1);
+    console.log(startIndex, endIndex)
     result.splice(endIndex, 0, removed);
 
     return result;
@@ -65,15 +67,15 @@ export const ListContainer = ({
             return;
         }
 
-        if ( type === 'lists') {
+        if ( type === 'list') {
             const items = reorder(
                 orderedData,
                 source.index,
                 destination.index
-            ).map((item, index) => ({...item, order: index}))
+            ).map((item, index) => ({...item, order: index }))
 
             setOrderedData(items);
-            executeUpdateListOrder({ items: items, boardId })
+            executeUpdateListOrder({  items, boardId })
         }
         // User moves a card
         if ( type === 'card') {

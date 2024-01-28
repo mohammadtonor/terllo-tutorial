@@ -3,10 +3,13 @@ import {Suspense} from "react";
 import {Info} from "@/app/(Platform)/(dashboard)/organization/[organizationId]/_components/info";
 import {Separator} from "@/components/ui/separator";
 import {BoardList} from "@/app/(Platform)/(dashboard)/organization/[organizationId]/_components/board-list";
+import {checkSubscription} from "@/lib/checkSubscription";
 const OrganizationIdPage = async () => {
+    const isPro = await checkSubscription()
+
     return (
         <div className='w-full mb-20'>
-            <Info />
+            <Info isPro={isPro}/>
             <Separator className='my-4' />
             <div className='px-2 md:px-4'>
                 <Suspense fallback={<BoardList.Skeleton />}>

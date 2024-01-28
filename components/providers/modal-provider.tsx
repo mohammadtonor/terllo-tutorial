@@ -1,7 +1,8 @@
 'use client'
 
 import {useEffect, useState} from "react";
-import {Index} from "@/components/modals/card-modal";
+import {CardModal} from "@/components/modals/card-modal";
+import {ProModal} from "@/components/modals/pro-modal";
 
 export const ModalProvider = () => {
     const [isMounted, setIsMounted] = useState(false);
@@ -16,7 +17,8 @@ export const ModalProvider = () => {
 
    return (
        <>
-           <Index />
+           <CardModal />
+           <ProModal />
        </>
    )
 }

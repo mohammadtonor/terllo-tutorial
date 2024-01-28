@@ -1,14 +1,16 @@
-import {List} from ".prisma/client";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
-import {Button} from "@/components/ui/button";
-import {MoreHorizontal, X} from "lucide-react";
-import {PopoverClose} from "@radix-ui/react-popover";
-import {FormButton} from "@/components/form/form-button";
-import {Separator} from "@/components/ui/separator";
-import {useAction} from "@/hooks/use-actions";
-import {deleteList} from "@/actions/delete-list";
 import {toast} from "sonner";
 import {ElementRef, useRef} from "react";
+import {List} from ".prisma/client";
+import {MoreHorizontal, X} from "lucide-react";
+import {copyList} from "@/actions/copy-list";
+import {useAction} from "@/hooks/use-actions";
+import {deleteList} from "@/actions/delete-list";
+
+import {FormButton} from "@/components/form/form-button";
+import {Separator} from "@/components/ui/separator";
+import {Button} from "@/components/ui/button";
+import {Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {PopoverClose} from "@radix-ui/react-popover";
 
 interface ListOptionsProps {
     data: List;
@@ -31,7 +33,7 @@ export const ListOptions = ({
         }
     })
 
-    const { execute: executeCopy} = useAction(deleteList, {
+    const { execute: executeCopy} = useAction(copyList, {
         onSuccess: data => {
             toast.success(`List "${data.title}" copied`);
             closeRef.current?.click();
@@ -80,7 +82,7 @@ export const ListOptions = ({
                 </Button>
                 <form action={onCopy}>
                     <input hidden name='id' id='id' value={data.id}/>
-                    <input hidden name='boardId' id='boardId' value={data.id}/>
+                    <input hidden name='boardId' id='boardId' value={data.boardId}/>
                     <FormButton
                         variant='ghost'
                         className='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
@@ -91,7 +93,7 @@ export const ListOptions = ({
                 <Separator/>
                 <form action={onDelete}>
                     <input hidden name='id' id='id' value={data.id}/>
-                    <input hidden name='boardId' id='boardId' value={data.id}/>
+                    <input hidden name='boardId' id='boardId' value={data.boardId}/>
                     <FormButton
                         variant='ghost'
                         className='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
